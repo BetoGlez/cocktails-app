@@ -1,6 +1,11 @@
 .home-page {
-    .title {
-        color: white;
+    .header-bar {
+        background-color: white;
+        border-bottom: 1px solid #316a9f;
+
+        .logo {
+            height: 30px;
+        }
     }
 
     .content {

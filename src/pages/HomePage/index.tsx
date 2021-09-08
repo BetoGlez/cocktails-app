@@ -11,26 +11,31 @@ const HomePage: React.FC<IHomePageProps> = () => {
 
     return (
         <Layout className="home-page">
-            <Header>
-                <Row justify="center">
+            <Header className="header-bar">
+                <Row gutter={[8, 0]} justify="center" align="middle">
                     <Col>
                         <h1 className="title">Cockatails App</h1>
+                    </Col>
+                    <Col>
+                        <img className="logo" src="https://www.pngplay.com/wp-content/uploads/6/Drink-Logo-PNG-Clipart-Background.png" alt="logo" />
                     </Col>
                 </Row>
             </Header>
             <Content className="content">
-                <Row>
-                    <Col span={24}>
-                        <Tabs defaultActiveKey={SEARCH_TAB_KEY} centered>
-                            <TabPane tab="Search cocktails" key={SEARCH_TAB_KEY}>
-                                <CocktailsSearchComponent />
-                            </TabPane>
-                            <TabPane tab="My cocktails lists" key={MY_LISTS_TAB_KEY}>
-                                <MyCocktailsComponent />
-                            </TabPane>
-                        </Tabs>
-                    </Col>
-                </Row>
+                <div className="main-container">
+                    <Row>
+                        <Col span={24}>
+                            <Tabs defaultActiveKey={SEARCH_TAB_KEY}>
+                                <TabPane tab="Search cocktails" key={SEARCH_TAB_KEY}>
+                                    <CocktailsSearchComponent />
+                                </TabPane>
+                                <TabPane tab="My cocktails lists" key={MY_LISTS_TAB_KEY}>
+                                    <MyCocktailsComponent />
+                                </TabPane>
+                            </Tabs>
+                        </Col>
+                    </Row>
+                </div>
             </Content>
         </Layout>
     );
