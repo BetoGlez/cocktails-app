@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Col, Layout, Row } from "antd";
+
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const { Header, Content } = Layout;
+
+    return (
+        <Layout>
+            <Header>
+                <Row justify="center">
+                    <Col>
+                        <h1 style={{color: "white"}}>Cockatails App</h1>
+                    </Col>
+                </Row>
+            </Header>
+            <Content>
+                <Row>
+                    <Col span={24}>
+                        <p>My app for cocktails</p>
+                    </Col>
+                </Row>
+            </Content>
+        </Layout>
+    );
 }
 
 export default App;
