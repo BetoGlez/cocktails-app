@@ -2,8 +2,8 @@ import { Layout, Row, Col, Tabs } from "antd";
 
 import "./HomePage.scss";
 import { IHomePageProps, MY_LISTS_TAB_KEY, SEARCH_TAB_KEY } from "./HomePage";
-import SearchPage from "../SearchPage";
-import ListsPage from "../ListsPage";
+import CocktailsSearchComponent from "../../components/CocktailsSearchComponent";
+import MyCocktailsComponent from "../../components/MyCocktailsComponent";
 
 const HomePage: React.FC<IHomePageProps> = () => {
     const { Header, Content } = Layout;
@@ -23,10 +23,10 @@ const HomePage: React.FC<IHomePageProps> = () => {
                     <Col span={24}>
                         <Tabs defaultActiveKey={SEARCH_TAB_KEY} centered>
                             <TabPane tab="Search cocktails" key={SEARCH_TAB_KEY}>
-                                <SearchPage />
+                                <CocktailsSearchComponent />
                             </TabPane>
                             <TabPane tab="My cocktails lists" key={MY_LISTS_TAB_KEY}>
-                                <ListsPage />
+                                <MyCocktailsComponent />
                             </TabPane>
                         </Tabs>
                     </Col>
