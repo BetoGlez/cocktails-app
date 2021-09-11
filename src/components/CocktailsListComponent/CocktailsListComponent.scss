@@ -1,9 +1,15 @@
 .cocktails-list-component {
-    .avatar-group {
-        margin-right: 16px;
+    .ant-list-item-meta-avatar {
+        margin-right: 32px;
     }
 
-    .delete-button {
+    .list-item-img {
+        width: 80px;
+        height: 80px;
+        border-radius: 100px;
+    }
+
+    .add-button {
         margin-left: 16px;
     }
 }

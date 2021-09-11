@@ -1,9 +1,8 @@
 import { Button, Col, Row } from "antd";
 
-import { IMyCocktailsComponentProps } from "./MyCocktailsComponent";
-import CocktailsListComponent from "../CocktailsListComponent";
+import MyCocktailsListsComponent from "../../components/MyCocktailsListsComponent";
 
-const MyCocktailsComponent: React.FC<IMyCocktailsComponentProps> = () => {
+const MyCocktailsPage: React.FC = () => {
     return (
         <div className="main-container">
             <Row>
@@ -18,11 +17,11 @@ const MyCocktailsComponent: React.FC<IMyCocktailsComponentProps> = () => {
             </Row>
             <Row className="margin-top" justify="center">
                 <Col span={20}>
-                    <CocktailsListComponent />
+                    <MyCocktailsListsComponent />
                 </Col>
             </Row>
         </div>
     );
 };
 
-export default MyCocktailsComponent;
+export default MyCocktailsPage;

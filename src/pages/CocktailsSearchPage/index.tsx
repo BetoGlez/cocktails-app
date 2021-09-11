@@ -1,14 +1,15 @@
 import { Row, Col, Select } from "antd";
 
 import "./CocktailsSearchComponent.scss";
-import { COCKTAIL_CATEGORY, ICocktailsSearchComponentProps, useCocktailsSearchComponent } from "./CocktailsSearchComponent";
-import SearchResultsComponent from "../SearchResultsComponent";
+import { useCocktailsSearchPage } from "./CocktailsSearchComponent";
+import CocktailsListComponent from "../../components/CocktailsListComponent";
+import { COCKTAIL_CATEGORY } from "../../models/cocktail.model";
 
-const CocktailsSearchComponent: React.FC<ICocktailsSearchComponentProps> = () => {
-    const { handleCategorySelectChange } = useCocktailsSearchComponent();
+const CocktailsSearchPage: React.FC = () => {
+    const { handleCategorySelectChange } = useCocktailsSearchPage();
 
     return (
-        <div className="cocktails-search-component main-container">
+        <div className="cocktails-search-page main-container">
             <Row>
                 <Col className="text-center" span={24}>
                     <h1>Cocktails search Page</h1>
@@ -24,11 +25,11 @@ const CocktailsSearchComponent: React.FC<ICocktailsSearchComponentProps> = () =>
             </Row>
             <Row className="margin-top" justify="center">
                 <Col span={20}>
-                    <SearchResultsComponent />
+                    <CocktailsListComponent />
                 </Col>
             </Row>
         </div>
     );
 };
 
-export default CocktailsSearchComponent;
+export default CocktailsSearchPage;
