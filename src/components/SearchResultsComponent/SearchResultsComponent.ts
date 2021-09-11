@@ -1,6 +1,8 @@
+import { ICocktail } from "../../models/cocktail.model";
+
 export interface ISearchResultsComponentProps {};
 
-export const MOCK_DATA = [
+export const MOCK_DATA: Array<ICocktail> = [
     {
         id: "1",
         imgUrl: "https://laroussecocina.mx/wp-content/uploads/2020/07/Mojito.jpg",

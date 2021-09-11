@@ -5,7 +5,6 @@ import { COCKTAIL_CATEGORY, ICocktailsSearchComponentProps, useCocktailsSearchCo
 import SearchResultsComponent from "../SearchResultsComponent";
 
 const CocktailsSearchComponent: React.FC<ICocktailsSearchComponentProps> = () => {
-    const { Option } = Select;
     const { handleCategorySelectChange } = useCocktailsSearchComponent();
 
     return (
@@ -18,8 +17,8 @@ const CocktailsSearchComponent: React.FC<ICocktailsSearchComponentProps> = () =>
             <Row className="margin-top margin-bottom">
                 <Col className="text-center" span={24}>
                     <Select className="select-bar" size="large" placeholder="Select a cocktail category" onChange={handleCategorySelectChange}>
-                        <Option value={COCKTAIL_CATEGORY.ALCOHOLIC}>Alcoholic</Option>
-                        <Option value={COCKTAIL_CATEGORY.NON_ALCOHOLIC}>Non Alcoholic</Option>
+                        <Select.Option value={COCKTAIL_CATEGORY.ALCOHOLIC}>Alcoholic</Select.Option>
+                        <Select.Option value={COCKTAIL_CATEGORY.NON_ALCOHOLIC}>Non Alcoholic</Select.Option>
                     </Select>
                 </Col>
             </Row>
