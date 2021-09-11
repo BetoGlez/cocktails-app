@@ -1,23 +1,23 @@
-import { MOCK_DATA } from "../CocktailsListComponent/CocktailsListComponent";
+import { ICocktail } from "../../models/cocktail.model";
 
 export const MOCK_COCKTAIL_LISTS = [
     {
         id: "1",
         name: "Tequila cocktails",
         description: "This cocktails list contains all the cocktails of x type, they are ideal for a summer night",
-        cocktails: MOCK_DATA
+        cocktails: new Array<ICocktail>()
     },
     {
         id: "2",
         name: "Summer cocktails",
         description: "This cocktails list contains all the cocktails of x type, they are ideal for a summer night",
-        cocktails: MOCK_DATA
+        cocktails: new Array<ICocktail>()
     },
     {
         id: "3",
         name: "Non alcoholic",
         description: "This cocktails list contains all the cocktails of x type, they are ideal for a summer night",
-        cocktails: MOCK_DATA
+        cocktails: new Array<ICocktail>()
     }
 ];
 

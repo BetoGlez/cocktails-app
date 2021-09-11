@@ -14,8 +14,8 @@ const MyCocktailsListsComponent: React.FC = () => {
                 <List.Item>
                     <Avatar.Group className="avatar-group" size="large" maxCount={MAX_AVATAR_GROUPS} maxStyle={AVATAR_GROUP_STYLE}>
                         { cocktailList.cocktails.map(cocktail => (
-                            <Tooltip key={cocktail.id} title={cocktail.name}>
-                                <Avatar size="large" style={getAvatarStyle()}>{cocktail.name.charAt(0)}</Avatar>
+                            <Tooltip key={cocktail.idDrink} title={cocktail.strDrink}>
+                                <Avatar size="large" style={getAvatarStyle()}>{cocktail.strDrink.charAt(0)}</Avatar>
                             </Tooltip>
                         ))}
                     </Avatar.Group>

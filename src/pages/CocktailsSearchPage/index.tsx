@@ -1,12 +1,14 @@
-import { Row, Col, Select } from "antd";
+import { Row, Col, Select, Spin } from "antd";
 
 import "./CocktailsSearchComponent.scss";
 import { useCocktailsSearchPage } from "./CocktailsSearchComponent";
 import CocktailsListComponent from "../../components/CocktailsListComponent";
-import { COCKTAIL_CATEGORY } from "../../models/cocktail.model";
+import { CocktailTypeEnum } from "../../models/cocktail.model";
+import { useGetCocktails } from "../../hooks/api/cocktails-hooks";
 
 const CocktailsSearchPage: React.FC = () => {
-    const { handleCategorySelectChange } = useCocktailsSearchPage();
+    const { selectedCocktailType, handleCategorySelectChange } = useCocktailsSearchPage();
+    const {cocktails, isLoading} = useGetCocktails(selectedCocktailType);
 
     return (
         <div className="cocktails-search-page main-container">
@@ -17,16 +19,22 @@ const CocktailsSearchPage: React.FC = () => {
             </Row>
             <Row className="margin-top margin-bottom">
                 <Col className="text-center" span={24}>
-                    <Select className="select-bar" size="large" placeholder="Select a cocktail category" onChange={handleCategorySelectChange}>
-                        <Select.Option value={COCKTAIL_CATEGORY.ALCOHOLIC}>Alcoholic</Select.Option>
-                        <Select.Option value={COCKTAIL_CATEGORY.NON_ALCOHOLIC}>Non Alcoholic</Select.Option>
+                    <Select className="select-bar" size="large" value={selectedCocktailType} onChange={handleCategorySelectChange}>
+                        <Select.Option value={CocktailTypeEnum.ALCOHOLIC}>Alcoholic</Select.Option>
+                        <Select.Option value={CocktailTypeEnum.NON_ALCOHOLIC}>Non Alcoholic</Select.Option>
                     </Select>
                 </Col>
             </Row>
             <Row className="margin-top" justify="center">
-                <Col span={20}>
-                    <CocktailsListComponent />
-                </Col>
+                { !isLoading ?
+                    <Col span={20}>
+                        <CocktailsListComponent cocktails={cocktails}/>
+                    </Col>
+                    :
+                    <Col>
+                        <Spin className="margin-top" />
+                    </Col>
+                }
             </Row>
         </div>
     );

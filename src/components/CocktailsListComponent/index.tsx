@@ -1,27 +1,33 @@
-import { List, Button, Tooltip } from "antd";
+import { List, Button, Tooltip, Empty } from "antd";
 import { PlusOutlined } from '@ant-design/icons';
 
 import "./CocktailsListComponent.scss";
-import { MOCK_DATA } from "./CocktailsListComponent";
+import { ICocktailsListComponentProps } from "./CocktailsListComponent";
 
-const CocktailsListComponent: React.FC = () => {
+const CocktailsListComponent: React.FC<ICocktailsListComponentProps> = ({cocktails}) => {
     return (
-        <List
-            className="cocktails-list-component"
-            dataSource={MOCK_DATA}
-            renderItem={cocktail => (
-                <List.Item>
-                    <List.Item.Meta
-                        avatar={<img className="list-item-img" src={cocktail.imgUrl} alt="Cocktail"/>}
-                        title={cocktail.name}
-                        description={cocktail.ingredients}
-                    />
-                    <Tooltip title="Add to a list">
-                        <Button className="add-button" type="primary" shape="circle" icon={<PlusOutlined />} />
-                    </Tooltip>
-                </List.Item>
-            )}
-        />
+        <>
+            { cocktails.length > 0 ?
+                <List
+                    className="cocktails-list-component"
+                    dataSource={cocktails}
+                    renderItem={cocktail => (
+                        <List.Item>
+                            <List.Item.Meta
+                                avatar={<img className="list-item-img" src={cocktail.strDrinkThumb} alt="Cocktail"/>}
+                                title={cocktail.strDrink}
+                                description={cocktail.strIngredient1}
+                            />
+                            <Tooltip title="Add to a list">
+                                <Button className="add-button" type="primary" shape="circle" icon={<PlusOutlined />} />
+                            </Tooltip>
+                        </List.Item>
+                    )}
+                />
+                :
+                <Empty />
+            }
+        </>
     );
 };
 

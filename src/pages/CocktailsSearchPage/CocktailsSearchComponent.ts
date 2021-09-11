@@ -1,9 +1,14 @@
-import { COCKTAIL_CATEGORY } from "../../models/cocktail.model";
+import { useState } from "react";
+
+import { CocktailTypeEnum } from "../../models/cocktail.model";
 
 export const useCocktailsSearchPage = () => {
-    const handleCategorySelectChange = (category: COCKTAIL_CATEGORY): void => {
-        console.log("Selected category: ", category);
+    const [selectedCocktailType, setSelectedCocktailType] = useState(CocktailTypeEnum.ALCOHOLIC);
+
+    const handleCategorySelectChange = (cocktailType: CocktailTypeEnum): void => {
+        console.log("Selected category: ", cocktailType);
+        setSelectedCocktailType(cocktailType);
     };
 
-    return { handleCategorySelectChange };
+    return { selectedCocktailType, handleCategorySelectChange };
 };
