@@ -4,10 +4,8 @@ import { ListItemActionEnum } from "../../MyCocktailsListsComponent/MyCocktailsL
 
 const SelectCocktailListModal: React.FC<ISelectCocktailListModalProps> = ({preselectedCocktail, onListCocktailSelect}) => {
     return (
-        <div className="main-container">
-            <MyCocktailsListsComponent listItemAction={ListItemActionEnum.SELECT}
-                onListItemSelect={(listId) => onListCocktailSelect(listId, preselectedCocktail)} />
-        </div>
+        <MyCocktailsListsComponent listItemAction={ListItemActionEnum.SELECT}
+            onListItemSelect={(listId) => onListCocktailSelect(listId, preselectedCocktail)} />
     );
 };
 

@@ -1,5 +1,5 @@
 import { ICocktail } from "../../models/cocktail.model";
-import { addCocktailToListActionCreator, createNewCocktailListActionCreator } from "../../store/cocktails-lists-data/cocktailsListsDataSlice";
+import { addCocktailToListActionCreator, createNewCocktailListActionCreator, deleteCocktailListActionCreator } from "../../store/cocktails-lists-data/cocktailsListsDataSlice";
 import { useAppDispatch, useAppSelector } from "../common/store-config-hooks";
 
 export const useCocktailsListsStore = () => {
@@ -16,5 +16,10 @@ export const useCocktailsListsStore = () => {
         console.log("Cocktail added: ", newCocktail.strDrink);
     };
 
-    return { cocktailsLists, createCocktailList, addCocktailToList };
+    const deleteCocktailList = (listId: string): void => {
+        dispatch(deleteCocktailListActionCreator({listId}));
+        console.log("Cocktail list deleted: ", listId);
+    };
+
+    return { cocktailsLists, createCocktailList, addCocktailToList, deleteCocktailList };
 };

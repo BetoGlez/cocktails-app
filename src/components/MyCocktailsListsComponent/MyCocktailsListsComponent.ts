@@ -1,3 +1,5 @@
+import { useCocktailsListsStore } from "../../hooks/store/cocktails-lists-hooks";
+
 export interface IMyCocktailsListsComponentProps {
     listItemAction: ListItemActionEnum;
     onListItemSelect?: (listId: string) => void;
@@ -20,6 +22,8 @@ const AVATAR_STYLES = [
 
 export const useMyCocktailsListsComponent = ({onListItemSelect}: IMyCocktailsListsComponentProps) => {
 
+    const {deleteCocktailList} = useCocktailsListsStore();
+
     const generateIntFromInterval = (min: number, max: number) => {
         return Math.floor(Math.random() * (max - min + 1) + min)
     };
@@ -36,7 +40,7 @@ export const useMyCocktailsListsComponent = ({onListItemSelect}: IMyCocktailsLis
             }
             break;
         case ListItemActionEnum.DELETE:
-            // TODO: Add logic to remove a list
+            deleteCocktailList(listId);
             break;
         }
     };

@@ -19,11 +19,15 @@ export const cocktailsListsDataSlice = createSlice({
             if (existingList) {
                 existingList.cocktails.push(payload.newCocktail);
             }
+        },
+        deleteCocktailList: (state, { payload }: PayloadAction<{listId: string}>) => {
+            state.cocktailsLists = state.cocktailsLists.filter(list => list.id !== payload.listId);
         }
     }
 });
 
 export const {
     createNewCocktailList: createNewCocktailListActionCreator,
-    addCocktailToList: addCocktailToListActionCreator
+    addCocktailToList: addCocktailToListActionCreator,
+    deleteCocktailList: deleteCocktailListActionCreator
 } = cocktailsListsDataSlice.actions;
