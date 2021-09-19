@@ -1,4 +1,4 @@
-import { useCocktailsListsStore } from "../../hooks/store/cocktails-lists-hooks";
+import { useCocktailsListsStore } from "../../../hooks/store/cocktails-lists-hooks";
 
 export interface IMyCocktailsListsComponentProps {
     listItemAction: ListItemActionEnum;

@@ -3,7 +3,7 @@ import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 import "./MyCocktailsListsComponent.scss";
 import { AVATAR_GROUP_STYLE, IMyCocktailsListsComponentProps, ListItemActionEnum, MAX_AVATAR_GROUPS, useMyCocktailsListsComponent } from "./MyCocktailsListsComponent";
-import { useCocktailsListsStore } from "../../hooks/store/cocktails-lists-hooks";
+import { useCocktailsListsStore } from "../../../hooks/store/cocktails-lists-hooks";
 
 const MyCocktailsListsComponent: React.FC<IMyCocktailsListsComponentProps> = (props) => {
     const {getAvatarStyle, handleListItemAction} = useMyCocktailsListsComponent(props);

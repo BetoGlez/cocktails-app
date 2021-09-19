@@ -1,9 +1,9 @@
 import { Button, Col, Modal, Row } from "antd";
 
 import { useMyCocktailsPage } from "./MyCocktailsPage";
-import MyCocktailsListsComponent from "../../components/MyCocktailsListsComponent";
+import MyCocktailsListsComponent from "../../components/lists/MyCocktailsListsComponent";
 import CreateListModal from "../../components/modals/CreateListModal";
-import { ListItemActionEnum } from "../../components/MyCocktailsListsComponent/MyCocktailsListsComponent";
+import { ListItemActionEnum } from "../../components/lists/MyCocktailsListsComponent/MyCocktailsListsComponent";
 
 const MyCocktailsPage: React.FC = () => {
     const {isCreateListModalVisible, showCreateListModal, hideCreateListModal, handleListCreation} = useMyCocktailsPage();

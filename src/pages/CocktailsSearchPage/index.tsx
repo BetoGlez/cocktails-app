@@ -2,7 +2,7 @@ import { Row, Col, Select, Spin, Affix, BackTop } from "antd";
 
 import "./CocktailsSearchComponent.scss";
 import { useCocktailsSearchPage } from "./CocktailsSearchComponent";
-import CocktailsListComponent from "../../components/CocktailsListComponent";
+import CocktailsListComponent from "../../components/lists/CocktailsListComponent";
 import { CocktailTypeEnum } from "../../models/cocktail.model";
 import { useGetCocktails } from "../../hooks/api/cocktails-hooks";
 

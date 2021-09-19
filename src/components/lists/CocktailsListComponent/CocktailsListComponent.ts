@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import { useCocktailsListsStore } from "../../hooks/store/cocktails-lists-hooks";
-import { ICocktail } from "../../models/cocktail.model";
+import { useCocktailsListsStore } from "../../../hooks/store/cocktails-lists-hooks";
+import { ICocktail } from "../../../models/cocktail.model";
 
 export interface ICocktailsListComponentProps {
     cocktails: Array<ICocktail>;

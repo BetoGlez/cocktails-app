@@ -1,6 +1,6 @@
 import { ISelectCocktailListModalProps } from "./SelectCocktailListModal";
-import MyCocktailsListsComponent from "../../MyCocktailsListsComponent";
-import { ListItemActionEnum } from "../../MyCocktailsListsComponent/MyCocktailsListsComponent";
+import MyCocktailsListsComponent from "../../lists/MyCocktailsListsComponent";
+import { ListItemActionEnum } from "../../lists/MyCocktailsListsComponent/MyCocktailsListsComponent";
 
 const SelectCocktailListModal: React.FC<ISelectCocktailListModalProps> = ({preselectedCocktail, onListCocktailSelect}) => {
     return (
