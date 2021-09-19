@@ -1,12 +1,12 @@
 import { Avatar, Button, List, Tooltip } from "antd";
-import { CloseOutlined } from "@ant-design/icons";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 import "./MyCocktailsListsComponent.scss";
-import { AVATAR_GROUP_STYLE, MAX_AVATAR_GROUPS, useMyCocktailsListsComponent } from "./MyCocktailsListsComponent";
+import { AVATAR_GROUP_STYLE, IMyCocktailsListsComponentProps, ListItemActionEnum, MAX_AVATAR_GROUPS, useMyCocktailsListsComponent } from "./MyCocktailsListsComponent";
 import { useCocktailsListsStore } from "../../hooks/store/cocktails-lists-hooks";
 
-const MyCocktailsListsComponent: React.FC = () => {
-    const {getAvatarStyle} = useMyCocktailsListsComponent();
+const MyCocktailsListsComponent: React.FC<IMyCocktailsListsComponentProps> = (props) => {
+    const {getAvatarStyle, handleListItemAction} = useMyCocktailsListsComponent(props);
     const {cocktailsLists} = useCocktailsListsStore();
 
     return (
@@ -26,8 +26,10 @@ const MyCocktailsListsComponent: React.FC = () => {
                         title={cocktailList.title}
                         description={cocktailList.description}
                     />
-                    <Tooltip title="Delete list">
-                        <Button className="delete-button" danger shape="circle" icon={<CloseOutlined />} />
+                    <Tooltip title={props.listItemAction === ListItemActionEnum.DELETE ? "Delete list" : "Select list"}>
+                        <Button className="action-button" danger={props.listItemAction === ListItemActionEnum.DELETE} shape="circle"
+                            icon={props.listItemAction === ListItemActionEnum.DELETE ? <CloseOutlined /> : <CheckOutlined />}
+                            onClick={() => handleListItemAction(cocktailList.id, props.listItemAction)} />
                     </Tooltip>
                 </List.Item>
             )}

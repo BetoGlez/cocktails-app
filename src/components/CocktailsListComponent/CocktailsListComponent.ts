@@ -1,3 +1,6 @@
+import { useState } from "react";
+
+import { useCocktailsListsStore } from "../../hooks/store/cocktails-lists-hooks";
 import { ICocktail } from "../../models/cocktail.model";
 
 export interface ICocktailsListComponentProps {
@@ -7,6 +10,9 @@ export interface ICocktailsListComponentProps {
 const MAX_INGREDIENTS_NUM = 15;
 
 export const useCocktailsListComponent = () => {
+
+    const {addCocktailToList} = useCocktailsListsStore();
+    const [preselectedCocktail, setPreselectedCocktail] = useState<ICocktail>();
 
     const composeCocktailIngredients = (cocktail: ICocktail): string => {
         let cocktailIngredients = "";
@@ -21,9 +27,18 @@ export const useCocktailsListComponent = () => {
         return cocktailIngredients;
     };
 
-    const addCocktailToList = (cocktailId: string): void => {
-        console.log("Cocktail: ", cocktailId);
+    const preselectCocktailForList = (cocktail: ICocktail): void => {
+        setPreselectedCocktail(cocktail);
     };
 
-    return { composeCocktailIngredients, addCocktailToList };
+    const cancelCocktailPreselection = (): void => {
+        setPreselectedCocktail(undefined);
+    };
+
+    const handleAddCocktailToList = (listId: string, cocktail: ICocktail): void => {
+        addCocktailToList(listId, cocktail);
+        setPreselectedCocktail(undefined);
+    };
+
+    return {preselectedCocktail, composeCocktailIngredients, preselectCocktailForList, handleAddCocktailToList, cancelCocktailPreselection};
 };

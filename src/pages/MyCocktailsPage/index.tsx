@@ -3,6 +3,7 @@ import { Button, Col, Modal, Row } from "antd";
 import { useMyCocktailsPage } from "./MyCocktailsPage";
 import MyCocktailsListsComponent from "../../components/MyCocktailsListsComponent";
 import CreateListModal from "../../components/modals/CreateListModal";
+import { ListItemActionEnum } from "../../components/MyCocktailsListsComponent/MyCocktailsListsComponent";
 
 const MyCocktailsPage: React.FC = () => {
     const {isCreateListModalVisible, showCreateListModal, hideCreateListModal, handleListCreation} = useMyCocktailsPage();
@@ -22,7 +23,7 @@ const MyCocktailsPage: React.FC = () => {
                 </Row>
                 <Row className="margin-top" justify="center">
                     <Col span={20}>
-                        <MyCocktailsListsComponent />
+                        <MyCocktailsListsComponent listItemAction={ListItemActionEnum.DELETE} />
                     </Col>
                 </Row>
             </div>
