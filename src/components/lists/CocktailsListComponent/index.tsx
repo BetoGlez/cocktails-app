@@ -4,10 +4,11 @@ import { PlusOutlined } from '@ant-design/icons';
 import "./CocktailsListComponent.scss";
 import { ICocktailsListComponentProps, useCocktailsListComponent } from "./CocktailsListComponent";
 import SelectCocktailListModal from "../../modals/SelectCocktailListModal";
+import { useCocktail } from "../../../hooks/cocktails/cocktail-hooks";
 
 const CocktailsListComponent: React.FC<ICocktailsListComponentProps> = ({cocktails}) => {
-    const {preselectedCocktail, composeCocktailIngredients, preselectCocktailForList, handleAddCocktailToList,
-        cancelCocktailPreselection} = useCocktailsListComponent();
+    const {composeCocktailIngredients} = useCocktail();
+    const {preselectedCocktail, preselectCocktailForList, handleAddCocktailToList, cancelCocktailPreselection} = useCocktailsListComponent();
     return (
         <>
             <List

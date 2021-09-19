@@ -1,0 +1,26 @@
+.cocktail-list-details-modal {
+    .ant-list-item-meta-avatar {
+        margin-right: 16px;
+    }
+
+    .ant-list-item {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .ant-list-item-meta {
+        width: 100%;
+    }
+
+    .list-item-img {
+        width: 80px;
+        height: 80px;
+        border-radius: 4px;
+    }
+
+    .instructions {
+        margin-top: 16px;
+        margin-bottom: 8px;
+    }
+}

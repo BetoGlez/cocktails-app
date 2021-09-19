@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { useCocktailsListsStore } from "../../../hooks/store/cocktails-lists-hooks";
+import { ICocktailList } from "../../../models/cocktail-list.model";
 
 export interface IMyCocktailsListsComponentProps {
     listItemAction: ListItemActionEnum;
@@ -23,6 +25,7 @@ const AVATAR_STYLES = [
 export const useMyCocktailsListsComponent = ({onListItemSelect}: IMyCocktailsListsComponentProps) => {
 
     const {deleteCocktailList} = useCocktailsListsStore();
+    const [selectedList, setSelectedList] = useState<ICocktailList>();
 
     const generateIntFromInterval = (min: number, max: number) => {
         return Math.floor(Math.random() * (max - min + 1) + min)
@@ -45,5 +48,13 @@ export const useMyCocktailsListsComponent = ({onListItemSelect}: IMyCocktailsLis
         }
     };
 
-    return {getAvatarStyle, handleListItemAction};
+    const showListDetails = (list: ICocktailList): void => {
+        setSelectedList(list);
+    };
+
+    const hideListDetails = (): void => {
+        setSelectedList(undefined);
+    };
+
+    return {selectedList, getAvatarStyle, handleListItemAction, showListDetails, hideListDetails};
 };
