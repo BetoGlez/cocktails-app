@@ -1,8 +1,10 @@
 import { useState } from "react";
 
+import { useCocktailsListsStore } from "../../hooks/store/cocktails-lists-hooks";
 import { INewCocktailListForm } from "../../models/forms/new-cocktail-list-form.model";
 
 export const useMyCocktailsPage = () => {
+    const {createCocktailList} = useCocktailsListsStore();
     const [isCreateListModalVisible, setIsCreateListModalVisible] = useState(false);
 
     const showCreateListModal = (): void => {
@@ -13,10 +15,11 @@ export const useMyCocktailsPage = () => {
         setIsCreateListModalVisible(false);
     };
 
-    const createCocktailList = (newList: INewCocktailListForm): void => {
-        console.log("New cocktail list data: ", newList);
+    const handleListCreation = (newList: INewCocktailListForm): void => {
+        const {listTitle, listDescription} = newList;
+        createCocktailList(listTitle, listDescription);
         hideCreateListModal();
     };
 
-    return {isCreateListModalVisible, showCreateListModal, hideCreateListModal, createCocktailList};
+    return {isCreateListModalVisible, showCreateListModal, hideCreateListModal, handleListCreation};
 };

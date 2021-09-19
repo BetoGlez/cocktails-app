@@ -5,7 +5,7 @@ import MyCocktailsListsComponent from "../../components/MyCocktailsListsComponen
 import CreateListModal from "../../components/modals/CreateListModal";
 
 const MyCocktailsPage: React.FC = () => {
-    const {isCreateListModalVisible, showCreateListModal, hideCreateListModal, createCocktailList} = useMyCocktailsPage();
+    const {isCreateListModalVisible, showCreateListModal, hideCreateListModal, handleListCreation} = useMyCocktailsPage();
 
     return (
         <>
@@ -28,7 +28,7 @@ const MyCocktailsPage: React.FC = () => {
             </div>
             <Modal title="Create a new cocktail list" visible={isCreateListModalVisible} footer={null}
                 onCancel={hideCreateListModal}>
-                <CreateListModal onCreateList={createCocktailList} hideModal={hideCreateListModal} />
+                <CreateListModal onCreateList={handleListCreation} hideModal={hideCreateListModal} />
             </Modal>
         </>
     );

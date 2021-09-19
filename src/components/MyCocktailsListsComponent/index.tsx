@@ -2,14 +2,17 @@ import { Avatar, Button, List, Tooltip } from "antd";
 import { CloseOutlined } from "@ant-design/icons";
 
 import "./MyCocktailsListsComponent.scss";
-import { AVATAR_GROUP_STYLE, MAX_AVATAR_GROUPS, MOCK_COCKTAIL_LISTS, useMyCocktailsListsComponent } from "./MyCocktailsListsComponent";
+import { AVATAR_GROUP_STYLE, MAX_AVATAR_GROUPS, useMyCocktailsListsComponent } from "./MyCocktailsListsComponent";
+import { useCocktailsListsStore } from "../../hooks/store/cocktails-lists-hooks";
 
 const MyCocktailsListsComponent: React.FC = () => {
     const {getAvatarStyle} = useMyCocktailsListsComponent();
+    const {cocktailsLists} = useCocktailsListsStore();
+
     return (
         <List
             className="my-cocktails-lists-component"
-            dataSource={MOCK_COCKTAIL_LISTS}
+            dataSource={cocktailsLists}
             renderItem={cocktailList => (
                 <List.Item>
                     <Avatar.Group className="avatar-group" size="large" maxCount={MAX_AVATAR_GROUPS} maxStyle={AVATAR_GROUP_STYLE}>
@@ -20,7 +23,7 @@ const MyCocktailsListsComponent: React.FC = () => {
                         ))}
                     </Avatar.Group>
                     <List.Item.Meta
-                        title={cocktailList.name}
+                        title={cocktailList.title}
                         description={cocktailList.description}
                     />
                     <Tooltip title="Delete list">
