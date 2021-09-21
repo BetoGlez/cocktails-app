@@ -7,6 +7,7 @@ import SelectCocktailListModal from "../../modals/SelectCocktailListModal";
 import { useCocktail } from "../../../hooks/cocktails/cocktail-hooks";
 
 const CocktailsListComponent: React.FC<ICocktailsListComponentProps> = ({cocktails}) => {
+    // Tip 3: Keep components dummy
     const {composeCocktailIngredients} = useCocktail();
     const {preselectedCocktail, preselectCocktailForList, handleAddCocktailToList, cancelCocktailPreselection} = useCocktailsListComponent();
     return (

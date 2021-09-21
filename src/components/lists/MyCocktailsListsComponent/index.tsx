@@ -8,6 +8,7 @@ import CocktailListDetailsModal from "../../modals/CocktailListDetailsModal";
 
 const MyCocktailsListsComponent: React.FC<IMyCocktailsListsComponentProps> = (props) => {
     const {selectedList, getAvatarStyle, handleListItemAction, showListDetails, hideListDetails} = useMyCocktailsListsComponent(props);
+    // Tip 5: Place state close to where is needed
     const {cocktailsLists} = useCocktailsListsStore();
 
     return (

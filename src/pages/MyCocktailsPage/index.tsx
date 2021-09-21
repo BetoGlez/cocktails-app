@@ -9,6 +9,7 @@ const MyCocktailsPage: React.FC = () => {
     const {isCreateListModalVisible, showCreateListModal, hideCreateListModal, handleListCreation} = useMyCocktailsPage();
 
     return (
+        // Tip 11: Use fragments to return a single parent node
         <>
             <div className="main-container">
                 <Row>
@@ -18,6 +19,7 @@ const MyCocktailsPage: React.FC = () => {
                 </Row>
                 <Row className="margin-top" justify="center">
                     <Col>
+                        {/* Tip 10: Encapsulate with sass */}
                         <Button onClick={showCreateListModal}>Create list</Button>
                     </Col>
                 </Row>

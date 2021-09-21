@@ -6,6 +6,7 @@ export const useCocktailsListsStore = () => {
     const { cocktailsLists } = useAppSelector(state => state.cocktailsListsData);
     const dispatch = useAppDispatch();
 
+    // Tip 4: Separate the model and presentation layer
     const createCocktailList = (title: string, description: string): void => {
         dispatch(createNewCocktailListActionCreator({title, description}));
         console.log("New list saved: ", {title, description});

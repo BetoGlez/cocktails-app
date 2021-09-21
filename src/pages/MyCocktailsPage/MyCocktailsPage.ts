@@ -4,6 +4,7 @@ import { useCocktailsListsStore } from "../../hooks/store/cocktails-lists-hooks"
 import { INewCocktailListForm } from "../../models/forms/new-cocktail-list-form.model";
 
 export const useMyCocktailsPage = () => {
+    // Tip 4: Separate the model and presentation layer
     const {createCocktailList} = useCocktailsListsStore();
     const [isCreateListModalVisible, setIsCreateListModalVisible] = useState(false);
 

@@ -2,6 +2,7 @@ import { ICocktail } from "../../models/cocktail.model";
 
 const MAX_INGREDIENTS_NUM = 15;
 
+// Tip 3: Keep components dummy
 export const useCocktail = () => {
     const composeCocktailIngredients = (cocktail: ICocktail): string => {
         let cocktailIngredients = "";
@@ -16,5 +17,6 @@ export const useCocktail = () => {
         return cocktailIngredients;
     };
 
+    // TIP 7: Hook return types
     return {composeCocktailIngredients};
 };

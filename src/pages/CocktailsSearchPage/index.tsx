@@ -8,7 +8,10 @@ import { useGetCocktails } from "../../hooks/api/cocktails-hooks";
 
 const CocktailsSearchPage: React.FC = () => {
     const { selectedCocktailType, handleCategorySelectChange } = useCocktailsSearchPage();
+    // Tip 4: Separate the model and presentation layer
     const {cocktails, isLoading} = useGetCocktails(selectedCocktailType);
+
+    // TIP 8: Include useEffect dependencies or useRef
 
     return (
         <div className="cocktails-search-page main-container">
