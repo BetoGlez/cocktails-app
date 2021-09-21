@@ -1,11 +1,12 @@
 import { Layout, Row, Col, Tabs } from "antd";
 
 import "./HomePage.scss";
-import { IHomePageProps, MY_LISTS_TAB_KEY, SEARCH_TAB_KEY } from "./HomePage";
+import { MY_LISTS_TAB_KEY, SEARCH_TAB_KEY } from "./HomePage";
 import CocktailsSearchPage from "../CocktailsSearchPage";
 import MyCocktailsPage from "../MyCocktailsPage";
+import { Assets } from "../../app-constants";
 
-const HomePage: React.FC<IHomePageProps> = () => {
+const HomePage: React.FC = () => {
     return (
         <Layout className="home-page">
             <Layout.Header className="header-bar">
@@ -14,7 +15,7 @@ const HomePage: React.FC<IHomePageProps> = () => {
                         <h1 className="title">Cocktails App</h1>
                     </Col>
                     <Col>
-                        <img className="logo" src="https://www.pngplay.com/wp-content/uploads/6/Drink-Logo-PNG-Clipart-Background.png" alt="logo" />
+                        <img className="logo" src={Assets.Images.APP_LOGO} alt="logo" />
                     </Col>
                 </Row>
             </Layout.Header>
