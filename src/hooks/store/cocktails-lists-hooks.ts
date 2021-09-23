@@ -1,5 +1,5 @@
 import { ICocktail } from "../../models/cocktail.model";
-import { addCocktailToListActionCreator, createNewCocktailListActionCreator, deleteCocktailListActionCreator } from "../../store/cocktails-lists-data/cocktailsListsDataSlice";
+import { addCocktailToListActionCreator, deleteCocktailListActionCreator } from "../../store/cocktails-lists-data/cocktailsListsDataSlice";
 import { useAppDispatch, useAppSelector } from "../common/store-config-hooks";
 
 export const useCocktailsListsStore = () => {
@@ -7,10 +7,6 @@ export const useCocktailsListsStore = () => {
     const dispatch = useAppDispatch();
 
     // Tip 4: Separate the model and presentation layer
-    const createCocktailList = (title: string, description: string): void => {
-        dispatch(createNewCocktailListActionCreator({title, description}));
-        console.log("New list saved: ", {title, description});
-    };
 
     const addCocktailToList = (listId: string, newCocktail: ICocktail): void => {
         dispatch(addCocktailToListActionCreator({listId, newCocktail}));
@@ -22,5 +18,5 @@ export const useCocktailsListsStore = () => {
         console.log("Cocktail list deleted: ", listId);
     };
 
-    return { cocktailsLists, createCocktailList, addCocktailToList, deleteCocktailList };
+    return { cocktailsLists, addCocktailToList, deleteCocktailList };
 };

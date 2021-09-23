@@ -3,13 +3,15 @@ import { Row, Col, Select, Spin, Affix, BackTop } from "antd";
 import "./CocktailsSearchComponent.scss";
 import { useCocktailsSearchPage } from "./CocktailsSearchComponent";
 import CocktailsListComponent from "../../components/lists/CocktailsListComponent";
-import { CocktailTypeEnum } from "../../models/cocktail.model";
-import { useGetCocktails } from "../../hooks/api/cocktails-hooks";
+import { CocktailTypeEnum, ICocktail } from "../../models/cocktail.model";
+import { useQuery } from "react-query";
+import { QueryKeys } from "../../api-client/api-constants";
+import { getFilteredDrinks } from "../../api-client/requests/gets";
 
 const CocktailsSearchPage: React.FC = () => {
     const { selectedCocktailType, handleCategorySelectChange } = useCocktailsSearchPage();
     // Tip 4: Separate the model and presentation layer
-    const {cocktails, isLoading} = useGetCocktails(selectedCocktailType);
+    const {data: cocktails, isLoading} = useQuery([QueryKeys.COCKTAILS, {a: selectedCocktailType}], () => getFilteredDrinks({a: selectedCocktailType}));
 
     // TIP 8: Include useEffect dependencies or useRef
 
@@ -36,7 +38,7 @@ const CocktailsSearchPage: React.FC = () => {
             <Row className="margin-top" justify="center">
                 { !isLoading ?
                     <Col span={20}>
-                        <CocktailsListComponent cocktails={cocktails}/>
+                        <CocktailsListComponent cocktails={cocktails || new Array<ICocktail>()}/>
                     </Col>
                     :
                     <Col>

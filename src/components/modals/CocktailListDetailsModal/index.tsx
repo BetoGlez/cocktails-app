@@ -5,6 +5,7 @@ import { ICocktailListDetailsModalProps } from "./CocktailListDetailsModal";
 import { useCocktail } from "../../../hooks/cocktails/cocktail-hooks";
 
 const CocktailListDetailsModal: React.FC<ICocktailListDetailsModalProps> = ({cocktails}) => {
+    // TIP 7: Hook return types
     const {composeCocktailIngredients} = useCocktail();
 
     return (

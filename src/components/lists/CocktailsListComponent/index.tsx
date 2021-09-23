@@ -1,15 +1,29 @@
+// Tip 12: Import order
 import { List, Button, Tooltip, Modal } from "antd";
 import { PlusOutlined } from '@ant-design/icons';
 
 import "./CocktailsListComponent.scss";
 import { ICocktailsListComponentProps, useCocktailsListComponent } from "./CocktailsListComponent";
 import SelectCocktailListModal from "../../modals/SelectCocktailListModal";
-import { useCocktail } from "../../../hooks/cocktails/cocktail-hooks";
+import { ICocktail } from "../../../models/cocktail.model";
 
 const CocktailsListComponent: React.FC<ICocktailsListComponentProps> = ({cocktails}) => {
-    // Tip 3: Keep components dummy
-    const {composeCocktailIngredients} = useCocktail();
     const {preselectedCocktail, preselectCocktailForList, handleAddCocktailToList, cancelCocktailPreselection} = useCocktailsListComponent();
+
+    // Tip 3: Keep components dummy
+    const composeCocktailIngredients = (cocktail: ICocktail): string => {
+        let cocktailIngredients = "";
+        for (let i = 1; i <= 15; i++) {
+            const ingredient = cocktail[`strIngredient${i}` as keyof ICocktail];
+            if (ingredient !== null) {
+                cocktailIngredients = cocktailIngredients ? `${cocktailIngredients}, ${ingredient}` : ingredient;
+            } else {
+                break;
+            }
+        }
+        return cocktailIngredients;
+    };
+
     return (
         <>
             <List

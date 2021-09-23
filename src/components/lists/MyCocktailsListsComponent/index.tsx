@@ -3,13 +3,13 @@ import { CheckOutlined, CloseOutlined, InfoOutlined } from "@ant-design/icons";
 
 import "./MyCocktailsListsComponent.scss";
 import { AVATAR_GROUP_STYLE, IMyCocktailsListsComponentProps, ListItemActionEnum, MAX_AVATAR_GROUPS, useMyCocktailsListsComponent } from "./MyCocktailsListsComponent";
-import { useCocktailsListsStore } from "../../../hooks/store/cocktails-lists-hooks";
 import CocktailListDetailsModal from "../../modals/CocktailListDetailsModal";
+import { ICocktailList } from "../../../models/cocktail-list.model";
 
 const MyCocktailsListsComponent: React.FC<IMyCocktailsListsComponentProps> = (props) => {
     const {selectedList, getAvatarStyle, handleListItemAction, showListDetails, hideListDetails} = useMyCocktailsListsComponent(props);
     // Tip 5: Place state close to where is needed
-    const {cocktailsLists} = useCocktailsListsStore();
+    const cocktailsLists = new Array<ICocktailList>();
 
     return (
         <>

@@ -5,7 +5,6 @@ import { INewCocktailListForm } from "../../models/forms/new-cocktail-list-form.
 
 export const useMyCocktailsPage = () => {
     // Tip 4: Separate the model and presentation layer
-    const {createCocktailList} = useCocktailsListsStore();
     const [isCreateListModalVisible, setIsCreateListModalVisible] = useState(false);
 
     const showCreateListModal = (): void => {
@@ -17,8 +16,7 @@ export const useMyCocktailsPage = () => {
     };
 
     const handleListCreation = (newList: INewCocktailListForm): void => {
-        const {listTitle, listDescription} = newList;
-        createCocktailList(listTitle, listDescription);
+        // Tip 4: Separate the model and presentation layer
         hideCreateListModal();
     };
 

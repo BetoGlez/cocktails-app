@@ -1,11 +1,29 @@
 import { Col, Row, Input, Space, Button } from "antd";
+import { FormikHelpers, useFormik } from "formik";
 
-import { ICreateListModalProps, useCreateListModal } from "./CreateListModal";
 import { MAX_COCKTAIL_LIST_DESCRIPTION_CHARS } from "../../../app-constants";
+import { INewCocktailListForm } from "../../../models/forms/new-cocktail-list-form.model";
+import { NEW_COCKTAIL_LIST_INITIAL_VALUES } from "./CreateListModal";
 
-const CreateListModal: React.FC<ICreateListModalProps> = (props) => {
+// Tip 2: Name a custom interface to define the props of a component
+const CreateListModal: React.FC<{
+    onCreateList: (listData: INewCocktailListForm) => void;
+    hideModal: () => void;
+}> = ({onCreateList, hideModal}) => {
 
-    const { newCocktailListForm } = useCreateListModal(props);
+    // Tip 1: Keep components under 100 lines
+    const createCocktailList = (values: INewCocktailListForm, helpers: FormikHelpers<INewCocktailListForm>): void => {
+        if (newCocktailListForm.isValid) {
+            const {listTitle, listDescription} = values;
+            onCreateList({listTitle, listDescription});
+            helpers.resetForm();
+        }
+    };
+
+    const newCocktailListForm = useFormik({
+        initialValues: NEW_COCKTAIL_LIST_INITIAL_VALUES,
+        onSubmit: createCocktailList
+    });
 
     return (
         <form onSubmit={newCocktailListForm.handleSubmit}>
@@ -28,7 +46,7 @@ const CreateListModal: React.FC<ICreateListModalProps> = (props) => {
                 <Row justify="end">
                     <Space>
                         <Col>
-                            <Button onClick={props.hideModal}>Cancel</Button>
+                            <Button onClick={hideModal}>Cancel</Button>
                         </Col>
                         <Col>
                             <Button type="primary" htmlType="submit"
